@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE properties SYSTEM "http://java.sun.com/dtd/properties.dtd">
+<properties>
+	<entry key="select.count.test">
+		SELECT COUNT(credit_id) FROM credit
+	</entry>
+	<entry key="select.facilities">
+			<![CDATA[
+	SELECT  
+						  id ,
+						  facility_type,
+						  state,
+						  zip ,
+						  beds,
+						  price,
+						  facility_status,
+						  facility_capacity,
+						  inspection_visit ,
+						  licensed_first_date,
+						  citation_number ,
+						  services_offered,
+						  affilations ,
+						  features ,
+						  map ,
+						  telephone,
+						  email ,
+						  description ,
+						  image ,
+						  title ,
+						  service_description,
+						  semi_private ,
+						  private_price, 
+						  client_id
+				FROM
+						facility
+				WHERE
+						state = :paramState
+						OR state IS NULL
+						AND
+						(
+							zip = :paramZip
+							OR zip IS NULL
+						)
+						AND (
+							facility_type=:paramFacilityType
+							OR facility_type IS NULL
+						)
+			]]>
+	
+	</entry>
+	
+</properties>
