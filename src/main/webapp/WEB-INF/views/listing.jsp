@@ -11,6 +11,7 @@
 <html>
 <head>
  	<%@include file="ui/cssJsConfig.jsp" %>
+ 	<%@include file="header.jsp" %>
 </head>
 <body>
     <div class="row">
@@ -124,7 +125,7 @@
                     <div class="ListingInfo col-sm-9 pr-sm-0 ">
                     <h2><c:out value="${facility.title}"/></h2>
                     <p>
-                    	<?php echo mb_strimwidth($list['description'], 0, 590, "..."); ?>
+                    	
                     	<c:set var="shortDesc" value="${fn:substring(facility.description, 0, 590)}" />
                     	<c:out value="${shortDesc}">...</c:out>
                     </p>
@@ -414,10 +415,15 @@
 }
 
    </style>
-   <?php foreach ($listing as $list)
-            {
-            ?>
-<div class="modal fade" id="contactmodal<?php if(isset($list['id'])){ echo $list['id'] ; }?>" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+   
+
+            	
+  
+    <c:choose>
+            	<c:when test="${not empty numberOfFacilities}">
+            		<c:forEach items="${facilities}" var="facility">
+
+<div class="modal fade" id='contactmodal<c:out value="${facility.id}"/>' tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
           aria-hidden="true">
           <div class="modal-dialog" role="document">
             <div class="modal-content">
@@ -434,7 +440,12 @@
                       <div class="card">
               <!-- Card content -->
               <div class="card-body">
-          <p>Contact us now, call <?php if(isset($list['telephone'])){echo $list['telephone'];} ?></p>
+          <p>
+          			Contact us now, call 
+          				<c:if test="${not empty telephone}">
+          					<c:out value="${telephone}"/>
+          				</c:if>
+          </p>
 
               </div>
             
@@ -447,7 +458,7 @@
             </div>
           </div>
 </div>   
-<div class="modal fade" id="Pricemodal<?php if(isset($list['id'])){echo $list['id'] ;} ?>" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+<div class="modal fade" id='Pricemodal<c:out value="${facility.id}"/>' tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
           aria-hidden="true">
           <div class="modal-dialog" role="document">
             <div class="modal-content">
@@ -475,50 +486,30 @@
                             </thead>
                             <tbody>
                               <tr>
-                                <td><?php if($list['beds'] !=0)
-                                    {
-                                        echo $list['beds'];
-                                    }
-                                    else
-                                    { ?>
-                                        0
-                                   <?php }
-                ?> Bedroom</td>
-                                <td style=" text-align: center;"><?php if($list['price'] !=0)
-                                    {
-                                        echo $list['price']."$";
-                                    }
-                                    else
-                                    { ?>
-                                        0$
-                                   <?php }
-                ?></td>
+                                <td>
+                               		<c:out value="${facility.bed}"/>
+								 Bedroom</td>
+                                <td style=" text-align: center;">
+                                	<c:choose>
+                                		<c:when test="${not empty facility.price}">
+                                			 <c:out value="${facility.price}"/>
+                                		</c:when>
+                                		<c:otherwise>0</c:otherwise>
+                                	</c:choose>
+ 								</td>
                               </tr>
-             
                               <tr>
                                 <td>Private</td>
-                                <td style=" text-align: center;"><?php if($list['private_price'] !=0)
-                                    {
-                                        echo $list['private_price']."$";
-                                    }
-                                    else
-                                    { ?>
-                                        0$
-                                   <?php }
-                ?></td>
+                                <td style=" text-align: center;">
+                                	<c:out value="${facility.privatePrice}"/>
+								</td>
                               </tr>
                              
                               <tr>
                                 <td>Semi Private</td>
-                                <td style=" text-align: center;"><?php if($list['semi_private'] !=0)
-                                    {
-                                        echo $list['semi_private']."$";
-                                    }
-                                    else
-                                    { ?>
-                                        0$
-                                   <?php }
-                ?></td>
+                                <td style=" text-align: center;">
+									<c:out value="${facility.semiPrivate}"/>
+								</td>
                             
                               </tr>
                               <tr><td class="pb-sm-0"></td><td class="pb-sm-0"></td></tr>
@@ -535,8 +526,16 @@
               
             </div>
           </div>
-</div>  <?php }
-?>
+</div>  
+
+      </c:forEach>
+    </c:when>
+	<c:otherwise>
+	</c:otherwise>
+</c:choose> 
+
+
+
 </body>
 
 </html>

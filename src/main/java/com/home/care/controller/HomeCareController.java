@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 import com.home.care.bo.FacilityBO;
+import com.home.care.bo.User;
 import com.home.care.dao.service.HomeCareService;
 import com.home.care.model.SearchModel;
 
@@ -51,10 +52,19 @@ public class HomeCareController {
 		model.addAttribute("numberOfFacilities", facilities.size());
 		model.addAttribute("stateZip", searchModel.getStateZip());
 		model.addAttribute("facilities", facilities);
+		
+		// TODO Session establishment required 
 		model.addAttribute("isUserLoggedIn", true);
+		model.addAttribute("user", new User());
 		
 		logger.info("size : "+facilities.size());
 		return "listing";
+	}
+	
+	@RequestMapping(value = "/searchDetail",method = RequestMethod.GET)
+	public String searchDetail(Locale locale, Model model)
+	{
+		return "detail";
 	}
 	
 }

@@ -9,6 +9,7 @@
 <html>
 <head>
  	<%@include file="ui/cssJsConfig.jsp" %>
+ 	<%@include file="header.jsp" %>
 </head>
 <body>
 <div class="row">
