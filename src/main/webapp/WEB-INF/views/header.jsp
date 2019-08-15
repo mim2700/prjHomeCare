@@ -89,7 +89,7 @@ $(document).ready(function(){
 });
 </script>
  
-    <title>BoardandCareHomesUSA.com</title>
+    <title> -- BoardandCareHomesUSA.com -- </title>
   </head>
   <body>
   <div class="row">
