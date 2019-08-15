@@ -36,7 +36,7 @@
     
     <!-- Data Source from Home Care - Production 	-->
 		<bean id="dataSourceHome" class="org.springframework.jndi.JndiObjectFactoryBean"> 
-    		<property name="jndiName" value="java:comp/env/jdbc/homeProd"/> 
+    		<property name="jndiName" value="java:comp/env/jdbc/conhomeProd"/> 
  		</bean> 
 	
 	<bean id="namedParameterJdbcTemplateDps" class="org.springframework.jdbc.core.namedparam.NamedParameterJdbcTemplate">  
