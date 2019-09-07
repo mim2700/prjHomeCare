@@ -2,7 +2,8 @@ package com.home.care.bo;
 
 public class FacilityBO {
 	private	String	id;
-	private String facilityType;
+	private String 	facilityType;
+	private	String	city;
 	private	String	state;
 	private	String	zip;
 	private	String	bed;
@@ -38,6 +39,13 @@ public class FacilityBO {
 	}
 	public void setFacilityType(String facilityType) {
 		this.facilityType = facilityType;
+	}
+	
+	public String getCity() {
+		return city;
+	}
+	public void setCity(String city) {
+		this.city = city;
 	}
 	public String getState() {
 		return state;
@@ -173,14 +181,14 @@ public class FacilityBO {
 	}
 	@Override
 	public String toString() {
-		return "FacilityBO [id=" + id + ", facilityType=" + facilityType + ", state=" + state + ", zip=" + zip
-				+ ", bed=" + bed + ", price=" + price + ", facilityStatus=" + facilityStatus + ", facilityCapacity="
-				+ facilityCapacity + ", inspectionVisit=" + inspectionVisit + ", licenseFirstDate=" + licenseFirstDate
-				+ ", citationNumber=" + citationNumber + ", servicesOffered=" + servicesOffered + ", affilations="
-				+ affilations + ", features=" + features + ", locationMap=" + locationMap + ", telephone=" + telephone
-				+ ", email=" + email + ", description=" + description + ", image=" + image + ", title=" + title
-				+ ", serviceDescription=" + serviceDescription + ", semiPrivate=" + semiPrivate + ", privatePrice="
-				+ privatePrice + ", clientId=" + clientId + "]";
+		return "FacilityBO [id=" + id + ", facilityType=" + facilityType + ", city=" + city + ", state=" + state
+				+ ", zip=" + zip + ", bed=" + bed + ", price=" + price + ", facilityStatus=" + facilityStatus
+				+ ", facilityCapacity=" + facilityCapacity + ", inspectionVisit=" + inspectionVisit
+				+ ", licenseFirstDate=" + licenseFirstDate + ", citationNumber=" + citationNumber + ", servicesOffered="
+				+ servicesOffered + ", affilations=" + affilations + ", features=" + features + ", locationMap="
+				+ locationMap + ", telephone=" + telephone + ", email=" + email + ", description=" + description
+				+ ", image=" + image + ", title=" + title + ", serviceDescription=" + serviceDescription
+				+ ", semiPrivate=" + semiPrivate + ", privatePrice=" + privatePrice + ", clientId=" + clientId + "]";
 	}
 	
 

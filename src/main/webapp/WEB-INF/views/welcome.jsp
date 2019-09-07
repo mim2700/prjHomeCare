@@ -20,31 +20,20 @@
 			<div class="col-md-12 input-section pr-sm-0">
 				<form:form action="searchAction" modelAttribute="searchModel" method="post">
 					<div class="row">
-						<div class="col-md-5 col-sm-12 pl-sm-0 pr-sm-0">
-							<div class="input-group">
-								<div class="input-group-prepend city-1">
-									<span class="input-group-text text-area find-block">Find</span>
+							<div class="col-md-3 col-sm-6 pl-sm-0 pr-sm-0">
+							</div>
+							<div class="col-md-5 col-sm-12 pl-sm-0 pr-sm-0">
+								<div class="input-group">
+									<div class="input-group-prepend">
+										<span class="input-group-text text-area">Where </span>
+									</div>
+									<form:input path="stateZip" cssClass="form-control" placeholder=" City Or Zip Code"/>
 								</div>
-								<select required name="facility_type"
-									class="mdb-select md-form city">
-									<option value="" selected>What are u looking for</option>
-									<option value="RCFE">RCFE</option>
-									<option value="RCFE ()">RCFE ()</option>
+							</div>
+							<div class="col-md-2 pl-sm-0 pr-sm-0">
+								<input type="submit" value="SEARCH" class="btn btn-success" />
+							</div>
 
-								</select>
-							</div>
-						</div>
-						<div class="col-md-5 col-sm-12 pl-sm-0 pr-sm-0">
-							<div class="input-group">
-								<div class="input-group-prepend">
-									<span class="input-group-text text-area">Where </span>
-								</div>
-								<form:input path="stateZip" cssClass="form-control" placeholder=" State Or Zip Code"/>
-							</div>
-						</div>
-						<div class="col-md-2 pl-sm-0 pr-sm-0">
-							<input type="submit" value="SEARCH" class="btn btn-success" />
-						</div>
 					</div>
 				</form:form>
 			</div>

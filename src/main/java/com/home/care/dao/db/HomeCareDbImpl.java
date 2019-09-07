@@ -35,7 +35,7 @@ public class HomeCareDbImpl implements HomeCareDbDao{
 	
 	public List<FacilityBO>	 getFacilities(String facilityType, String state, String zip)
 	{
-		String		SQL_SELECT_FACILITIES	=	queryProps.getProperty(Constants.SQL_SELECT_FACILITIES);
+		String		SQL_SELECT_FACILITIES	=	queryProps.getProperty(Constants.SQL_SELECT_FACILITIES_RCFE);
 		
 		RowMapper<FacilityBO> mapper	= new RowMapper<FacilityBO>() {
 			
@@ -43,6 +43,7 @@ public class HomeCareDbImpl implements HomeCareDbDao{
 				FacilityBO	facilityBO	=	new FacilityBO();
 				  facilityBO.setId(rs.getString("id"));
 				  facilityBO.setFacilityType(rs.getString("facility_type"));
+				  facilityBO.setCity(rs.getString("city"));
 				  facilityBO.setState(rs.getString("state"));  
 				  facilityBO.setZip(rs.getString("zip"));  
 				  facilityBO.setBed(rs.getString("beds"));  
@@ -71,7 +72,7 @@ public class HomeCareDbImpl implements HomeCareDbDao{
 		
 		Map<String, String> mapParams		=	new HashMap<String, String>();
 		mapParams.put("paramZip", zip);
-		mapParams.put("paramState", state);
+		mapParams.put("paramLocation", state);
 		mapParams.put("paramFacilityType", facilityType);
 		
 		logger.info("mapParams : "+mapParams);

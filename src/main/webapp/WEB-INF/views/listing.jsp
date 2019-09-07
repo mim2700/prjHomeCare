@@ -12,7 +12,17 @@
 <head>
  	<%@include file="ui/cssJsConfig.jsp" %>
  	<%@include file="header.jsp" %>
+
+	<script type="text/javascript" class="init">
+	$(function() { 
+		$(document).ready(function() {
+			$('#facilityTable').DataTable();
+		} );
+	});
+	</script>
+
 </head>
+
 <body>
     <div class="row">
                <div class="col-md-12 box-search pr-sm-5 mx-sm-5 pt-5">
@@ -20,10 +30,10 @@
                    <hr>
                   <p class="pt-3 border-top lighten-3" style="font-size: 22px;"><spring:message code="prop.home.care.content.01"/></p>
                  
-                 <!--<p class="pt-3 border-top lighten-3" style="font-size: 22px;">Care homes, also known as adult familiy homes,board and care homes, residential care or personal care homes offer personalized service to small groups of adults. These residential homes provide lodging, meal service and assistance with daily living activities.  </p>-->
+                 <p class="pt-3 border-top lighten-3" style="font-size: 22px;">Care homes, also known as adult family homes,board and care homes, residential care or personal care homes offer personalized service to small groups of adults. These residential homes provide lodging, meal service and assistance with daily living activities.  </p>
                   
-                  <!--<p class="mx-sm-5 px-sm-5 mt-sm-5" style="font-size: 22px;">If you are a family member is finding daily activies increasingly more challenging.there are several senior living communities that offers quality care assisted living service in the New York city appriciate
-                  the companionship they receive the safe,carefree,friendly and stimullating enviroment. Don't postpone your enjoyment of life.Choose assisted living community that's right for you.    </p>-->
+                  <p class="mx-sm-5 px-sm-5 mt-sm-5" style="font-size: 22px;">If you are a family member is finding daily activies increasingly more challenging.there are several senior living communities that offers quality care assisted living service in the New York city appriciate
+                  the companionship they receive the safe,carefree,friendly and stimulating environment. Don't postpone your enjoyment of life.Choose assisted living community that's right for you.    </p>
             </div>
     </div>
     <div class="row border-bottom lighten-3">
@@ -42,66 +52,35 @@
             <div class="col-md-12 NoPadding">
 	
                <form method="post" action="<?php echo base_url('home/filter') ?>">
-                <div class="form-group">
-                    <label for="rooms">Facility Type</label>
-                <select name="facility_type" class="form-control" id="sel1" required>
-                    
-                    <option>RCFE</option>
-                    <option>RCFE ()</option>
-                    
-                  </select>
-                </div>
-                
 
-          <div class="">
-         		<div class="form-group">
-         		    <label for="rooms">Where</label>
-                <input type="text" name="where" class="form-control" id="sel1" required />
-              	</div>
-
-          </div>
-           
-             
-         <div class="">
-             <div class="form-group">
-                 <label for="rooms">Beds</label>
-                <select name="beds" class="browser-default custom-select" required>
-                  <option selected>No. of beds</option>
-                  <option value="1">One</option>
-                  <option value="2">Two</option>
-                  <option value="23">Three</option>
-                </select>
-              </div>
-          </div>
-          
-          <!-- <div class="">
-             	<div class="form-group">
-                   <div class="hotel_price_box">
-                             
-                             <div class="panel-group mg_b2">
-                                <div class="panel panel-default"> 
-                                    <div class="panel-heading">
-                                          <h4 class="panel-title">
-                                            <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion" href="#hotel_price">
-                                                            Price
-                                            </a>
-                                          </h4>
-                                    </div>
-                                    
-                                    
-                         
-                        </div>
-                        </div>
-                        </div>
-                    
-              	</div>
-          </div> --> 
-          
-          <div class="">
-          <button type="" class="fullWidth" style="background-color:#62a404;border: 1px solid #62a404; padding:8px;margin:5px 0px;"><a href="#">Search</a></button>         
-      		</div>
+			          <div class="">
+			         		<div class="form-group">
+			         		    <label for="rooms">Where</label>
+			                <input type="text" name="where" class="form-control" id="sel1" required />
+			              	</div>
+			
+			          </div>
+			           
+			             
+			         <div class="">
+			             <div class="form-group">
+			                 <label for="rooms">Beds</label>
+			                <select name="beds" class="browser-default custom-select" required>
+			                  <option selected>No. of beds</option>
+			                  <option value="1">One</option>
+			                  <option value="2">Two</option>
+			                  <option value="23">Three</option>
+			                </select>
+			              </div>
+			          </div>
+			          
+			          <div class="">
+			          <button type="" class="fullWidth" style="background-color:#62a404;border: 1px solid #62a404; padding:8px;margin:5px 0px;"><a href="#">Search</a></button>         
+			      		</div>
+			      
+			 </form>
       
-      </form></div>
+      </div>
       
       </div>
       </div>
@@ -109,37 +88,27 @@
            
             <div class=" col-sm-9 ">
         	<div class=" Info row border-bottom lighten-3 mb-3">
+        		<div class="col-sm-3 p-sm-0"><img src='<c:url value="resources/images/bchdefaultpic.jpg"/>' alt="BoradandHomeCareUSA"style="width:50%;"></div>
             	<div class="col text-left p-sm-0"><p>${numberOfFacilities} Results Found</p></div>
                 <div class="col text-right"><p class="newca"><c:url value="${stateZip}"/></p></div>
             </div>
-           
-            <c:choose>
-            	<c:when test="${not empty numberOfFacilities}">
-            	<c:forEach items="${facilities}" var="facility">
-            <div class="col-sm p-sm-3 mt-sm-4 grey lighten-3">
-            	<div class="Listpartr">
-            	    <div class="row"> <img src='<c:url value="resources/images/bchdefaultpic.jpg"/>' alt="BoradandHomeCareUSA"style="width:96%;">
-                	<div class="col-sm-3 NoPadding rounded mb-0"><img src='<c:url value="resources/images/bchdefaultpic.jpg"/>' alt="BoradandHomeCareUSA"style="width:96%;">
-                	    
-                	</div>
-                    <div class="ListingInfo col-sm-9 pr-sm-0 ">
-                    <h2><c:out value="${facility.title}"/></h2>
-                    <p>
-                    	
-                    	<c:set var="shortDesc" value="${fn:substring(facility.description, 0, 590)}" />
-                    	<c:out value="${shortDesc}">...</c:out>
-                    </p>
-                            <div class="icons ">
-                            
-                                <ul> 
-                                    <li><img src='<c:url value="/resources/images/www.png"/>'>WEBSITE</li><li>/ 
-                                    <img src='<c:url value="/resources/images/broucher.png"/>'>BROUCHER</li><li>/ 
-                                    <img src='<c:url value="/resources/images/floor.png"/>'>FLOOR PLAN</li><li>/ 
-                                    <img src='<c:url value="/resources/images/event.png"/>'>EVENT</li><li>/ 
-                                    <img src='<c:url value="/resources/images/pic.png"/>'>PHOTO GALLERY</li>
-                                </ul>
-                            </div>
-                        <div class=" Clearfix RightAlign">
+     <c:choose>
+       <c:when test="${not empty numberOfFacilities}">     
+           <table id="facilityTable" class="table table-striped table-bordered display" style="width:100%">
+           		<thead>
+           			<tr>
+           				<th>Title</th>
+           				<th>City</th>
+           				<th>Status</th>
+           				<th>Details</th>
+           			</tr>
+           		</thead>
+           		<c:forEach items="${facilities}" var="facility">
+           			<tr>	
+           				<td><c:out value="${facility.title}"/></td>
+           				<td><c:out value="${facility.city}"/></td>
+           				<td><c:out value="${facility.facilityStatus}"/></td>
+           				<td>
                             <div class="SecondaryButton">
                             	<a 	data-toggle='modal' 
                             		data-target='#contactmodal<c:out value="${facility.id}"/>'
@@ -149,7 +118,7 @@
                             		</c:if> 
                             	>
                             		<img src='<c:url value="/resources/images/phone.png"/>'>
-                            		Contact Number
+                            		Contact
                             	</a>
                             </div>
                             <div class="SecondaryButton">
@@ -161,7 +130,7 @@
                              				style="width:auto;padding: 4px 12px 4px 5px;"
                             		>
                             			<img src='<c:url value="/resources/images/tag.png"/>'>
-                            			Show Pricing
+                            			Pricing
                             		</a>
                            </div>
                          	<div class="PrimaryButton">
@@ -171,197 +140,39 @@
 		                            	</c:if> 
                          				  style="width:auto;"
                          			>
-                         				Show Detail
+                         					Detail
                          			</a>
-                         	</div>
-                        
-                         
-                 </div>
-                    </div>
-                 
-                 	
-                 </div>
-                 </div>
-                 </div>
+                         	</div>           				
+ 					<div class=" Clearfix">
+							<div class="icons" style="color: green;">
+								
+                                    <i class="fas fa-globe"> Website </i>
+                                    <i class="fas fa-file-word">Brocher</i>
+                                   	<i class="fas fa-building">Floor Plan</i>
+                                    <i class="fas fa-calendar-alt">Event</i>
+                                    <i class="fas fa-image">Photo Galary</i>
+                                
+                            </div>
+                            
+						</td>
+           			</tr>
+           		</c:forEach>
+           </table>
+       </c:when>
+       	<c:otherwise>
+                 <div class="col-sm p-sm-3 mt-sm-4 grey lighten-3">
+       			<div class="Listpartr">
+       	    		<div class="row">
+           				<div class="col-sm-3 NoPadding rounded mb-0">
+           	    			No results found
+           	    		</div>
+           	    	</div>
+           	   </div>
+           	 </div>            	
+       	</c:otherwise>       
+       </c:choose>
+           
 
-            	</c:forEach>
-            	</c:when>
-            	<c:otherwise>
-                      <div class="col-sm p-sm-3 mt-sm-4 grey lighten-3">
-            			<div class="Listpartr">
-            	    		<div class="row">
-                				<div class="col-sm-3 NoPadding rounded mb-0">
-                	    			No results found
-                	    		</div>
-                	    	</div>
-                	   </div>
-                	 </div>            	
-            	</c:otherwise>
-            </c:choose>
-             
-                 <!--<div class="col-sm p-sm-3 mt-sm-4 grey lighten-3">
-            	<div class="Listpartr">
-            	    <div class="row">
-                	<div class="col-sm-3 NoPadding rounded mb-0"><img src="<?php echo base_url(); ?>assest/images/bchdefaultpic.jpg" alt="BoradandHomeCareUSA"style="width:96%;">
-                	    
-                	</div>
-                    <div class="ListingInfo col-sm-9 pr-sm-5 ">
-                    <h2>Atria at Villages of Windsor</h2>
-                    <p>Our mission at Acacia Home Health Services is to provide professional health care services in one`s home. By providing such excellence, wer`e able to bring forth the following goals: - Prevent institutionalization - Facilitate early hosp...</p>
-                            <div class="icons ">
-                                <ul>
-                                    <li><img src="<?php echo base_url(); ?>assest/images/www.png">WEBSITE</li><li>/ <img src="<?php echo base_url(); ?>assest/images/broucher.png">BROUCHER</li><li>/ <img src="<?php echo base_url(); ?>assest/images/floor.png">FLOOR PLAN</li><li>/ <img src="<?php echo base_url(); ?>assest/images/event.png">EVENT</li><li>/ <img src="<?php echo base_url(); ?>assest/images/pic.png">PHOTO GALLERY</li>
-                                </ul>
-                            </div>
-                        <div class=" Clearfix RightAlign">
-                            <div class="SecondaryButton"><a data-toggle='modal' data-target='#contactmodal' <?php  if($mdl == 'false'){echo "onclick='myFunction(event)'";}?> style="width:auto;padding: 4px 12px 4px 5px;"><img src="<?php echo base_url(); ?>assest/images/phone.png">Contact Number</a></div>
-                            <div class="SecondaryButton"><a data-toggle='modal' data-target='#Pricemodal' <?php  if($mdl == 'false'){echo "onclick='myFunction(event)'";}?> style="width:auto;padding: 4px 12px 4px 5px;"><img src="<?php echo base_url(); ?>assest/images/tag.png">Show Pricing</a></div>
-                         <div class="PrimaryButton"><a href="<?php echo base_url('Home/searchDetail'); ?>" <?php  if($mdl == 'false'){echo "onclick='myFunction(event)'";}?>  style="width:auto;">SHOW DETAIL</a></div>
-                        
-                         
-                 </div>
-                    </div>
-                 
-                 	
-                 </div>
-                 </div>
-                 </div>
-                 
-                 
-                 <div class="col-sm p-sm-3 mt-sm-4 grey lighten-3">
-            	<div class="Listpartr">
-            	    <div class="row">
-                	<div class="col-sm-3 NoPadding rounded mb-0"><img src="<?php echo base_url(); ?>assest/images/bchdefaultpic.jpg" alt="BoradandHomeCareUSA"style="width:96%;">
-                	    
-                	</div>
-                    <div class="ListingInfo col-sm-9 pr-sm-5 ">
-                    <h2>Atria at Villages of Windsor</h2>
-                    <p>Our mission at Acacia Home Health Services is to provide professional health care services in one`s home. By providing such excellence, wer`e able to bring forth the following goals: - Prevent institutionalization - Facilitate early hosp...</p>
-                            <div class="icons ">
-                                <ul>
-                                    <li><img src="<?php echo base_url(); ?>assest/images/www.png">WEBSITE</li><li>/ <img src="<?php echo base_url(); ?>assest/images/broucher.png">BROUCHER</li><li>/ <img src="<?php echo base_url(); ?>assest/images/floor.png">FLOOR PLAN</li><li>/ <img src="<?php echo base_url(); ?>assest/images/event.png">EVENT</li><li>/ <img src="<?php echo base_url(); ?>assest/images/pic.png">PHOTO GALLERY</li>
-                                </ul>
-                            </div>
-                        <div class=" Clearfix RightAlign">
-                            <div class="SecondaryButton"><a data-toggle='modal' data-target='#contactmodal'<?php  if($mdl == 'false'){echo "onclick='myFunction(event)'";}?> style="width:auto;padding: 4px 12px 4px 5px;"><img src="<?php echo base_url(); ?>assest/images/phone.png">Contact Number</a></div>
-                            <div class="SecondaryButton"><a data-toggle='modal' data-target='#Pricemodal' <?php  if($mdl == 'false'){echo "onclick='myFunction(event)'";}?> style="width:auto;padding: 4px 12px 4px 5px;"><img src="<?php echo base_url(); ?>assest/images/tag.png">Show Pricing</a></div>
-                         <div class="PrimaryButton"><a href="<?php echo base_url('Home/searchDetail'); ?>" <?php  if($mdl == 'false'){echo "onclick='myFunction(event)'";}?>  style="width:auto;">SHOW DETAIL</a></div>
-                        
-                         
-                 </div>
-                    </div>
-                 
-                 	
-                 </div>
-                 </div>
-                 </div>
-                 
-                 
-                 
-                 
-                 <div class="col-sm p-sm-3 mt-sm-4 grey lighten-3">
-            	<div class="Listpartr">
-            	    <div class="row">
-                	<div class="col-sm-3 NoPadding rounded mb-0"><img src="<?php echo base_url(); ?>assest/images/bchdefaultpic.jpg" alt="BoradandHomeCareUSA"style="width:96%;">
-                	    
-                	</div>
-                    <div class="ListingInfo col-sm-9 pr-sm-5 ">
-                    <h2>Atria at Villages of Windsor</h2>
-                    <p>Our mission at Acacia Home Health Services is to provide professional health care services in one`s home. By providing such excellence, wer`e able to bring forth the following goals: - Prevent institutionalization - Facilitate early hosp...</p>
-                            <div class="icons ">
-                                <ul>
-                                    <li><img src="<?php echo base_url(); ?>assest/images/www.png">WEBSITE</li><li>/ <img src="<?php echo base_url(); ?>assest/images/broucher.png">BROUCHER</li><li>/ <img src="<?php echo base_url(); ?>assest/images/floor.png">FLOOR PLAN</li><li>/ <img src="<?php echo base_url(); ?>assest/images/event.png">EVENT</li><li>/ <img src="<?php echo base_url(); ?>assest/images/pic.png">PHOTO GALLERY</li>
-                                </ul>
-                            </div>
-                        <div class=" Clearfix RightAlign">
-                            <div class="SecondaryButton"><a data-toggle='modal' data-target='#contactmodal' <?php  if($mdl == 'false'){echo "onclick='myFunction(event)'";}?> style="width:auto;padding: 4px 12px 4px 5px;"><img src="<?php echo base_url(); ?>assest/images/phone.png">Contact Number</a></div>
-                            <div class="SecondaryButton"><a data-toggle='modal' data-target='#Pricemodal' <?php  if($mdl == 'false'){echo "onclick='myFunction(event)'";}?> style="width:auto;padding: 4px 12px 4px 5px;"><img src="<?php echo base_url(); ?>assest/images/tag.png">Show Pricing</a></div>
-                         <div class="PrimaryButton"><a href="<?php echo base_url('Home/searchDetail'); ?>" <?php  if($mdl == 'false'){echo "onclick='myFunction(event)'";}?>  style="width:auto;">SHOW DETAIL</a></div>
-                        
-                         
-                 </div>
-                    </div>
-                 
-                 	
-                 </div>
-                 </div>
-                 </div>
-                 
-                 
-                 
-                 
-                 <div class="col-sm p-sm-3 mt-sm-4 grey lighten-3">
-            	<div class="Listpartr">
-            	    <div class="row">
-                	<div class="col-sm-3 NoPadding rounded mb-0"><img src="<?php echo base_url(); ?>assest/images/bchdefaultpic.jpg" alt="BoradandHomeCareUSA"style="width:96%;">
-                	    
-                	</div>
-                    <div class="ListingInfo col-sm-9 pr-sm-5 ">
-                    <h2>Atria at Villages of Windsor</h2>
-                    <p>Our mission at Acacia Home Health Services is to provide professional health care services in one`s home. By providing such excellence, wer`e able to bring forth the following goals: - Prevent institutionalization - Facilitate early hosp...</p>
-                            <div class="icons ">
-                                <ul>
-                                    <li><img src="<?php echo base_url(); ?>assest/images/www.png">WEBSITE</li><li>/ <img src="<?php echo base_url(); ?>assest/images/broucher.png">BROUCHER</li><li>/ <img src="<?php echo base_url(); ?>assest/images/floor.png">FLOOR PLAN</li><li>/ <img src="<?php echo base_url(); ?>assest/images/event.png">EVENT</li><li>/ <img src="<?php echo base_url(); ?>assest/images/pic.png">PHOTO GALLERY</li>
-                                </ul>
-                            </div>
-                        <div class=" Clearfix RightAlign">
-                            <div class="SecondaryButton"><a data-toggle='modal' data-target='#contactmodal' <?php  if($mdl == 'false'){echo "onclick='myFunction(event)'";}?> style="width:auto;padding: 4px 12px 4px 5px;"><img src="<?php echo base_url(); ?>assest/images/phone.png">Contact Number</a></div>
-                            <div class="SecondaryButton"><a data-toggle='modal' data-target='#Pricemodal' <?php  if($mdl == 'false'){echo "onclick='myFunction(event)'";}?> style="width:auto;padding: 4px 12px 4px 5px;"><img src="<?php echo base_url(); ?>assest/images/tag.png">Show Pricing</a></div>
-                         <div class="PrimaryButton"><a href="<?php echo base_url('Home/searchDetail'); ?>" <?php  if($mdl == 'false'){echo "onclick='myFunction(event)'";}?>  style="width:auto;">SHOW DETAIL</a></div>
-                        
-                         
-                 </div>
-                    </div>
-                 
-                 	
-                 </div>
-                 </div>
-                 </div>-->
-                 
-                 
-                 
-                <!-- <div class="col-sm p-sm-3 mt-sm-4 grey lighten-3 my-sm-5">
-            	<div class="Listpartr">
-            	    <div class="row">
-                	<div class="col-sm-3 NoPadding "><img src="<?php echo base_url(); ?>assest/images/bchdefaultpic.jpg" alt="BoradandHomeCareUSA"style="width:96%;">
-                	    
-                	</div>
-                    <div class="ListingInfo col-sm-9 pr-sm-5 ">
-                    <h2>Atria at Villages of Windsor</h2>
-                    <p>Our mission at Acacia Home Health Services is to provide professional health care services in one`s home. By providing such excellence, wer`e able to bring forth the following goals: - Prevent institutionalization - Facilitate early hosp...</p>
-                            <div class="icons ">
-                                <ul>
-                                    <li><img src="<?php echo base_url(); ?>assest/images/www.png">WEBSITE</li><li>/ <img src="<?php echo base_url(); ?>assest/images/broucher.png">BROUCHER</li><li>/ <img src="<?php echo base_url(); ?>assest/images/floor.png">FLOOR PLAN</li><li>/ <img src="<?php echo base_url(); ?>assest/images/event.png">EVENT</li><li>/ <img src="<?php echo base_url(); ?>assest/images/pic.png">PHOTO GALLERY</li>
-                                </ul>
-                            </div>
-                        <div class=" Clearfix RightAlign">
-                            <div class="SecondaryButton"><a data-toggle='modal' data-target='#contactmodal' <?php  if($mdl == 'false'){echo "onclick='myFunction(event)'";}?> style="width:auto;padding: 4px 12px 4px 5px;"><img src="<?php echo base_url(); ?>assest/images/phone.png">Contact Number</a></div>
-                            <div class="SecondaryButton"><a data-toggle='modal' data-target='#Pricemodal' <?php  if($mdl == 'false'){echo "onclick='myFunction(event)'";}?> style="width:auto;padding: 4px 12px 4px 5px;"><img src="<?php echo base_url(); ?>assest/images/tag.png">Show Pricing</a></div>
-                         <div class="PrimaryButton"><a href="<?php echo base_url('Home/searchDetail'); ?>" <?php  if($mdl == 'false'){echo "onclick='myFunction(event)'";}?>  style="width:auto;">SHOW DETAIL</a></div>
-                                    
-                 
-                 
-                 
-                    </div>
-                 
-                 	
-                 </div>
-                 </div>-->
-                 <!--<nav aria-label="Page navigation example">
-                          <ul class="pagination pg-blue justify-content-end">
-                            <li class="page-item disabled" style=" width: 25%;">
-                              <a class="page-link" tabindex="-1" style="display: inline-block;">Result Per Page</a> <span>30 <i class="fa fa-angle-down" aria-hidden="true"></i></span>
-                            </li>
-                            <li class="page-item"><a class="page-link">1</a></li>
-                            <li class="page-item"><a class="page-link" style="color:#ec9a9e;">2</a></li>
-                            <li class="page-item"><a class="page-link" style="color:#ec9a9e;">3</a></li>
-                            <li class="page-item"><a class="page-link" style="color:#ec9a9e;">4</a></li>
-                            <li class="page-item"><a class="page-link">...</a></li>
-                              <a class="page-link"><i class="fa fa-angle-right" aria-hidden="true" style="color:#ec9a9e;"></i></a></li>
-                          </ul>
-                        </nav>
-                 </div>
-                 </div>-->
         </div> 
         
         

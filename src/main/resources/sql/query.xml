@@ -6,7 +6,7 @@
 	</entry>
 	<entry key="select.facilities">
 			<![CDATA[
-	SELECT  
+				SELECT  
 						  id ,
 						  facility_type,
 						  state,
@@ -47,6 +47,58 @@
 						)
 			]]>
 	
+	</entry>
+	<entry key="select.facilities.rcfe">
+		<![CDATA[
+
+				SELECT  
+						FacilityNumber 		AS 	id 
+					,	FacilityType		AS	facility_type
+					,	FacilityCity		AS	city
+					,	FacilityState		AS	state
+					,	FacilityZip			AS	zip
+					,	'-'					AS	beds
+					,	'-'					AS	price
+					,	FacilityStatus		AS	facility_status
+					,	FacilityCapacity	AS	facility_capacity
+					,	InspectionVisits	AS	inspection_visit
+					,	LicenseFirstDate	AS	licensed_first_date
+					,	CitationNumbers		AS	citation_number
+					,	'-'			AS	services_offered
+					,	'-'			AS	affilations
+					,	'-'			AS	features
+					,	'-'			AS	map
+					,	FacilityTelephoneNumber	AS	telephone
+					,	'-'			AS	email
+					,	'-'			AS	DESCRIPTION
+					,	'-'			AS	image
+					,	FacilityName		AS	title
+					,	'-'			AS	service_description
+					,	'-'			AS	semi_private
+					,	'-'			AS	private_price
+					,	'-'			AS	client_id
+				FROM
+						rcfe
+				WHERE
+						FacilityState 	= :paramLocation
+					OR 	FacilityState IS NULL
+					AND
+					(
+							FacilityCity = :paramLocation
+						OR 	FacilityCity IS NULL
+					)					
+					AND
+					(
+							FacilityZip = :paramZip
+						OR 	FacilityZip IS NULL
+					)
+					
+					AND (
+							FacilityType	=:paramFacilityType
+						OR 	FacilityType IS NULL
+					)
+
+		]]>
 	</entry>
 	
 </properties>
