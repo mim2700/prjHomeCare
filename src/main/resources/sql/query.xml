@@ -80,21 +80,21 @@
 				FROM
 						rcfe
 				WHERE
-						FacilityState 	= :paramLocation
+						UPPER (FacilityState) 	= UPPER (:paramLocation)
 					OR 	FacilityState IS NULL
-					AND
+					OR
 					(
-							FacilityCity = :paramLocation
+							UPPER (FacilityCity) = UPPER(:paramLocation)
 						OR 	FacilityCity IS NULL
 					)					
-					AND
+					OR
 					(
-							FacilityZip = :paramZip
+							UPPER (FacilityZip) = UPPER (:paramZip)
 						OR 	FacilityZip IS NULL
 					)
 					
-					AND (
-							FacilityType	=:paramFacilityType
+					OR (
+							UPPER (FacilityType)	=:paramFacilityType
 						OR 	FacilityType IS NULL
 					)
 
