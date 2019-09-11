@@ -134,7 +134,7 @@
                             		</a>
                            </div>
                          	<div class="PrimaryButton">
-                         			<a href="<c:url value="searchDetail"/>" 
+                         			<a  
                          				<c:if test="${not isUserLoggedIn}">
 		                            		 onclick='myFunction(event)' 
 		                            	</c:if> 
