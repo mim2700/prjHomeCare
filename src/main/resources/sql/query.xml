@@ -4,7 +4,7 @@
 	<entry key="select.count.test">
 		SELECT COUNT(credit_id) FROM credit
 	</entry>
-	<entry key="select.facilities">
+<!-- 	<entry key="select.facilities">
 			<![CDATA[
 				SELECT  
 						  id ,
@@ -47,7 +47,7 @@
 						)
 			]]>
 	
-	</entry>
+	</entry> -->
 	<entry key="select.facilities.rcfe">
 		<![CDATA[
 
@@ -84,17 +84,17 @@
 					OR 	FacilityState IS NULL
 					OR
 					(
-							UPPER (FacilityCity) = UPPER(:paramLocation)
+							UPPER (FacilityCity) = UPPER (:paramLocation)
 						OR 	FacilityCity IS NULL
 					)					
 					OR
 					(
-							UPPER (FacilityZip) = UPPER (:paramZip)
+							FacilityZip = :paramZip
 						OR 	FacilityZip IS NULL
 					)
 					
 					OR (
-							UPPER (FacilityType)	=:paramFacilityType
+							UPPER (FacilityType)	= UPPER (:paramFacilityType)
 						OR 	FacilityType IS NULL
 					)
 
