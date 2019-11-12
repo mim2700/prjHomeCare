@@ -51,34 +51,22 @@
                 <p class="border-bottom lighten-3">Search</p>
             <div class="col-md-12 NoPadding">
 	
-               <form method="post" action="<?php echo base_url('home/filter') ?>">
-
+               
+				<form:form action="searchAction" modelAttribute="searchModel" method="post">
 			          <div class="">
 			         		<div class="form-group">
 			         		    <label for="rooms">Where</label>
-			                <input type="text" name="where" class="form-control" id="sel1" required />
+			                <input type="text" name="stateZip" class="form-control" id="sel1" required />
 			              	</div>
 			
 			          </div>
-			           
-			             
-			         <div class="">
-			             <div class="form-group">
-			                 <label for="rooms">Beds</label>
-			                <select name="beds" class="browser-default custom-select" required>
-			                  <option selected>No. of beds</option>
-			                  <option value="1">One</option>
-			                  <option value="2">Two</option>
-			                  <option value="23">Three</option>
-			                </select>
-			              </div>
-			          </div>
+
 			          
 			          <div class="">
-			          <button type="" class="fullWidth" style="background-color:#62a404;border: 1px solid #62a404; padding:8px;margin:5px 0px;"><a href="#">Search</a></button>         
+			          <button type="submit" class="fullWidth" style="background-color:#62a404;border: 1px solid #62a404; padding:8px;margin:5px 0px;"><a href="#">Search</a></button>         
 			      		</div>
 			      
-			 </form>
+			 </form:form>
       
       </div>
       
