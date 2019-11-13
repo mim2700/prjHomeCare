@@ -37,6 +37,8 @@ public class HomeCareDbImpl implements HomeCareDbDao{
 	{
 		String		SQL_SELECT_FACILITIES	=	queryProps.getProperty(Constants.SQL_SELECT_FACILITIES_RCFE);
 		
+		logger.info("SQL : "+SQL_SELECT_FACILITIES);
+		
 		RowMapper<FacilityBO> mapper	= new RowMapper<FacilityBO>() {
 			
 			public FacilityBO mapRow(ResultSet rs, int rowNum) throws SQLException {
