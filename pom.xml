@@ -23,7 +23,16 @@
             <configuration>
                 <source>${jdk.version}</source>
                 <target>${jdk.version}</target>
+                <outputDirectory>${project.basedir}/docker</outputDirectory>
             </configuration>
+	        <executions>
+	            <execution>
+	                <goals>
+	                    <goal>compile</goal>
+	                </goals>
+	            </execution>
+	       </executions>            
+            
 			</plugin>
 
 		</plugins>
